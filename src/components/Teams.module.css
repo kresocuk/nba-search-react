@@ -1,0 +1,23 @@
+.contenttable{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9 rem;
+    min-width: 400px;
+
+}
+
+.header {
+    background-color: #009879;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+    
+}
+.header th{
+    padding: 12px 15px;
+}
+
+.name td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+}
