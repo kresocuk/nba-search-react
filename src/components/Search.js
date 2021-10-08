@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 import classes from "./Search.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
@@ -51,9 +52,9 @@ const Search = (props) => {
         <div className={classes.dataResult}>
           {filteredPlayer.slice(0, 15).map((value, key) => {
             return (
-              <a className={classes.dataItem}>
+              <Link to={`stats/${value.id}`} className={classes.dataItem} key={value.id} >
                 <p> {value.firstName} {value.lastName}  </p>
-              </a>
+              </Link>
             );
           })}
         </div>

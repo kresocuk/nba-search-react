@@ -7,11 +7,8 @@ import PlayerStats from "./components/PlayerStats";
 
 function App() {
   const [players, setPlayers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
     axios
       .get(`https://www.balldontlie.io/api/v1/players`)
       .then((player) => {
@@ -39,7 +36,7 @@ function App() {
         <Search placeholder="Enter a name... " data={transformedPlayers} />
       </div>
       </Route>
-      <Route path="/stats">
+      <Route path="/stats/:id">
         <PlayerStats />
       </Route>
       </Switch>
