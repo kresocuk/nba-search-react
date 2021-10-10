@@ -1,30 +1,36 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios from 'axios';
 
 const PlayerStats = (props) => {
-  const [averages, setAverages] = useState([]);
+
+  useEffect(()=>{
+    fetchStatsHandler();
+  },[]);
+
+  const [averages, setAverages] = useState({});
 
   const params = useParams();
   console.log(params);
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=${params.id}`
-      )
-      .then((stats) => {
-        setAverages(stats.data.data);
-      });
-  }, [params.id]);
-
-  console.log(averages);
-
+  async function fetchStatsHandler() {
+    const response = await fetch(`https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=${params.id}`);
+    const stats = await response.json();
+    
+    const transformedStats = stats.data.map((statsData) =>{
+      return {
+        points: statsData.pts,
+        rebounds: statsData.reb,
+        assists: statsData.ast,
+      };
+    });
+    setAverages(transformedStats);
+    console.log(transformedStats);
+    console.log(averages);
+  }
   return (
     <div>
-      <li>Points: {averages[0].pts}</li>
-      <li>Rebounds: {averages[0].reb}</li>
-      <li>Assists: {averages[0].ast}</li>
+      {/* <p>Stats: {averages[0].pts} {averages[0].reb} {averages[0].ast}</p> */}
     </div>
   );
 };
