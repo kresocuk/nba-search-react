@@ -5,7 +5,6 @@ import "./App.css";
 import fire from "./fire";
 import Search from "./components/Search";
 import PlayerStats from "./components/PlayerStats";
-import { SetMeal } from "@mui/icons-material";
 import Login from "./Login";
 import Hero from "./Hero";
 
@@ -87,12 +86,12 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`https://www.balldontlie.io/api/v1/players?per_page=100`)
+      .get(`https://www.balldontlie.io/api/v1/players?per_page=100&page=30`)
       .then((player) => {
         setPlayers(player.data.data);
       });
   }, []);
-  console.log(players);
+  
 
   const transformedPlayers = players.map((playerData) => {
     return {
@@ -101,8 +100,8 @@ function App() {
       lastName: playerData.last_name,
     };
   });
-
   console.log(transformedPlayers);
+  
 
   return (
     <Fragment>

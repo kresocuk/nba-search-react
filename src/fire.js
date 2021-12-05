@@ -4,7 +4,12 @@ import firebase from "firebase";
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    
+    apiKey: "AIzaSyC6YLFvj4XWDa43ebSKADh-aSvk9jEJfcE",
+    authDomain: "nba-login-3cbe4.firebaseapp.com",
+    projectId: "nba-login-3cbe4",
+    storageBucket: "nba-login-3cbe4.appspot.com",
+    messagingSenderId: "1095715225695",
+    appId: "1:1095715225695:web:bd4ed589aa78b5475fdbea"
   };
 
   // Initialize Firebase

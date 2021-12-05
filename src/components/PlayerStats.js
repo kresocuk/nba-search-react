@@ -1,36 +1,63 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import axios from 'axios';
 
-const PlayerStats = (props) => {
+
+const PlayerStats = () => {
 
   useEffect(()=>{
     fetchStatsHandler();
   },[]);
 
-  const [averages, setAverages] = useState({});
+  const [averages, setAverages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const params = useParams();
-  console.log(params);
+  
 
-  async function fetchStatsHandler() {
-    const response = await fetch(`https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=${params.id}`);
+  const fetchStatsHandler = useCallback(async () =>{ 
+    setIsLoading(true);
+    try{
+    const response = await fetch(`https://www.balldontlie.io/api/v1/season_averages?season=2021&player_ids[]=${params.id}`);
+    if(!response.ok){
+      throw new Error('Error loading!');
+    }
+    
     const stats = await response.json();
     
-    const transformedStats = stats.data.map((statsData) =>{
-      return {
-        points: statsData.pts,
-        rebounds: statsData.reb,
-        assists: statsData.ast,
-      };
-    });
-    setAverages(transformedStats);
-    console.log(transformedStats);
-    console.log(averages);
+
+    const loadedStats = [];
+    
+    for (const key in stats.data){
+      loadedStats.push({
+        points: stats.data[key].pts,
+        rebounds: stats.data[key].reb,
+        assists: stats.data[key].ast,
+      });
+    }
+
+    
+    setAverages(loadedStats);
+    
+  }catch (error){
+
   }
+    setIsLoading(false);
+    
+  }, []);
+
+  useEffect(() =>{
+    fetchStatsHandler();
+  }, [fetchStatsHandler]);
+  
+  let mappedStats = (averages).map((averages)=>{
+    return(
+      <li> Points: {averages.points} Rebounds: {averages.rebounds} Assists: {averages.assists}</li>
+    )
+  })
+  
   return (
     <div>
-      {/* <p>Stats: {averages[0].pts} {averages[0].reb} {averages[0].ast}</p> */}
+      <p>{mappedStats}</p>
     </div>
   );
 };
