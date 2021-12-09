@@ -1,0 +1,67 @@
+.selectYear{
+    width: 70px;
+}
+.stats {
+    
+}
+.pos{
+    
+}
+.back{
+    padding-top:50px;
+    background-image: linear-gradient(90deg, #e8dbfc, #f8f9d2);
+    height: 100vh;
+    text-align: center;
+    width: 100%;
+    
+}
+.table{
+    padding-top: 40px;
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: center;
+    width: 100%;
+    
+   
+}
+.table th{
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  border-top: 2px black solid;
+  border-radius: 6px 6px 0px 0px;
+  color: white;
+ 
+}
+.table td{
+    font-size: 20px;
+    border: 1px black solid;
+}
+.headers {
+    background: rgb(78, 7, 78);
+    border-radius: 10px;
+}
+
+.yearfilter {
+    color: white;
+    padding: 0 1rem;
+  }
+  
+  .yearfiltercont {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+  }
+  
+  .yearfilter label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .yearfilter select {
+    font: inherit;
+    padding: 0.5rem 3rem;
+    font-weight: bold;
+    border-radius: 6px;
+  }

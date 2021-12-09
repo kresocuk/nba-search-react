@@ -52,7 +52,7 @@ const Search = (props) => {
         <div className={classes.dataResult}>
           {filteredPlayer.slice(0, 15).map((value, key) => {
             return (
-              <Link to={`stats/${value.id}`} className={classes.dataItem} key={value.id} >
+              <Link to={`averages/${value.id}`} className={classes.dataItem} key={value.id} >
                 <p> {value.firstName} {value.lastName}  </p>
               </Link>
             );

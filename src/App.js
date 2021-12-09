@@ -7,6 +7,7 @@ import Search from "./components/Search";
 import PlayerStats from "./components/PlayerStats";
 import Login from "./Login";
 import Hero from "./Hero";
+import GameStats from "./components/GameStats";
 
 function App() {
   const [user, setUser] = useState("");
@@ -100,7 +101,7 @@ function App() {
       lastName: playerData.last_name,
     };
   });
-  console.log(transformedPlayers);
+ 
   
 
   return (
@@ -131,8 +132,11 @@ function App() {
             <Search placeholder="Enter a name... " data={transformedPlayers} />
           </div>
         </Route>
-        <Route path="/stats/:id">
+        <Route path="/averages/:id">
           <PlayerStats />
+        </Route>
+        <Route path="/stats/:id">
+          <GameStats />
         </Route>
       </Switch>
     </Fragment>

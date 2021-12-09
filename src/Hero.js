@@ -21,11 +21,12 @@ const Hero = ({logoutHandler}) =>{
           }
     
           const file = await response.json();
-    
+  
           const loadedGames = [];
           
           for (const key in file.data) {
             loadedGames.push({
+              id: file.data[key].id,
               home_team_name: file.data[key].home_team.full_name,
               visitor_team_name: file.data[key].visitor_team.full_name,
               home_score: file.data[key].home_team_score,
@@ -45,13 +46,22 @@ const Hero = ({logoutHandler}) =>{
       }, [fetchGamesHandler]);
       
      
-
+    
     let mappedArray = (games).map((games)=>{
       return(
-        <li>{games.home_team_name} {games.home_score} - {games.visitor_score} {games.visitor_team_name} </li>
+        <table className={classes.table}>
+          <tbody>
+          <tr>
+            <td>{games.home_team_name}</td>
+            <td><Link to={`stats/${games.id}`} key={games.id}>{games.home_score} - {games.visitor_score}</Link></td>
+            <td>{games.visitor_team_name}</td>
+          </tr>
+          </tbody>
+        </table>
+        
       )
     })
-
+    console.log(games);
     return(
         <section className={classes.hero}>
             <nav>
@@ -61,7 +71,7 @@ const Hero = ({logoutHandler}) =>{
                 </Link>
                 <button onClick={logoutHandler}>Logout</button>
             </nav>
-            <h1>Rezultati</h1>
+            <h1 className={classes.games}>Last night scores</h1>
             <ul>{mappedArray}</ul>
         </section>
     )
