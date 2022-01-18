@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
+import classes from "./GameStats.module.css";
 
 
 const GameStats = () => {
@@ -42,11 +43,8 @@ const GameStats = () => {
       )
     })
 
-    return (
-        <div>
-            <p>{mappedArray}</p>
-        </div>
-    )
+    console.log(mappedArray);
+  
     
 }
     export default GameStats;

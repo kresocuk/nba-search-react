@@ -1,57 +1,87 @@
 .selectYear{
     width: 70px;
 }
-.stats {
-    
-}
-.pos{
-    
-}
+
+
 .back{
-    padding-top:50px;
     background-image: linear-gradient(90deg, #e8dbfc, #f8f9d2);
     height: 100vh;
     text-align: center;
-    width: 100%;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-between;
+    
     
 }
 .table{
-    padding-top: 40px;
-    padding-left: 15%;
-    padding-right: 15%;
-    text-align: center;
-    width: 100%;
     
+    text-align: center;
+    width: 80%;
+    border-collapse: collapse;  
+
    
 }
+
 .table th{
   text-align: center;
   padding: 10px;
   font-size: 20px;
-  border-top: 2px black solid;
   border-radius: 6px 6px 0px 0px;
   color: white;
- 
+  background: rgb(78, 7, 78);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .table td{
     font-size: 20px;
     border: 1px black solid;
+    text-align: center;
+    
 }
-.headers {
-    background: rgb(78, 7, 78);
+@media screen and (max-width: 600px) {
+  table {
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table th {
+    display: inline-block;
     border-radius: 10px;
+    float: none;
+    width: 80%;
+  }
+  
+  table tr {
+    display: inline-block;
+    margin-bottom: .625em;
+    overflow: hidden;
+    float: none;
+    width: 50%;
+    vertical-align: middle;
+  }
+  
+  table td {
+    display: block;
+    font-size: .8em;
+    text-align: center;
+    height: 40px;
+    align-items: center;
+  }
+   
 }
 
 .yearfilter {
     color: white;
-    padding: 0 1rem;
+    padding: 2rem;
   }
   
   .yearfiltercont {
-    width: 100%;
     align-items: center;
     justify-content: space-between;
-    margin: 1rem 0;
+    
   }
   
   .yearfilter label {

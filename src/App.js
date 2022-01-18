@@ -81,7 +81,7 @@ function App() {
 
   useEffect(() => {
     authListener();
-  }, []);
+  }, );
 
   const [players, setPlayers] = useState([]);
 

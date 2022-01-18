@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import classes from "./PlayerStats.module.css";
+import Spinner from "./Spinner";
 
-
-const PlayerStats = () => {
+const PlayerStats = (props) => {
 
   useEffect(()=>{
     fetchStatsHandler();
@@ -106,7 +106,7 @@ const PlayerStats = () => {
   
   return (
     <div  className={classes.back}>
-    <div>
+    
     <div className={classes.yearfilter}>
       <div className={classes.yearfiltercont}>
         <select value={filteredYear} onChange={filterChangeHandler}>
@@ -119,10 +119,7 @@ const PlayerStats = () => {
         </select>
       </div>
     </div>
-      <p  className={classes.pos}>{mappedStats}</p>
-      <div>
-      </div>
-    </div>
+      <div  className={classes.pos}>{!isLoading && mappedStats}</div>
     </div>
   );
 };
